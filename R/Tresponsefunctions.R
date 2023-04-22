@@ -39,14 +39,20 @@ TVcmax <- function(Tleaf, EaV, delsC, EdVC){
     f <- V1/V2
   } else f <- 1
   
-  exp((Tleaf-25)*EaV/(.Rgas()*Tk(Tleaf)*Tk(25))) * f
+#  exp((Tleaf-25)*EaV/(.Rgas()*Tk(Tleaf)*Tk(25))) * f
+#Yufeng: Modified here to match the Matalb Farquhar
+  R = .Rgas()/1000
+  exp(26.35 - 65.33 / (R * Tk(Tleaf)))
 }
 
 # Jmax temperature response (Arrhenius)
 TJmax <- function(Tleaf, EaJ, delsJ, EdVJ){
   J1 <- 1+exp((298.15*delsJ-EdVJ)/.Rgas()/298.15)
   J2 <- 1+exp((Tk(Tleaf)*delsJ-EdVJ)/.Rgas()/Tk(Tleaf))
-  exp(EaJ/.Rgas()*(1/298.15 - 1/Tk(Tleaf)))*J1/J2
+#  exp(EaJ/.Rgas()*(1/298.15 - 1/Tk(Tleaf)))*J1/J2
+#Yufeng: Modified here to match the Matalb Farquhar
+  R = .Rgas()/1000
+  exp(17.57 - 43.54 / (R * Tk(Tleaf)))
 }
 
 
