@@ -346,7 +346,7 @@ Photosyn <- function(VPD=1.5,
   
   # Electron transport rate
   J <- Jfun(PPFD, alpha, Jmax, theta)
-  VJ <- J/4
+  VJ <- J/4.5
   
   #--- Stop here if only the parameters are required
   if(returnParsOnly){
@@ -481,7 +481,7 @@ Photosyn <- function(VPD=1.5,
     if(is.null(gmeso) || gmeso < 0){
       # Get photosynthetic rate  
       Ac <- Vcmax*(CIC - GammaStar)/(CIC + Km)
-      Aj <- VJ * (CIJ - GammaStar)/(CIJ + 2*GammaStar)
+      Aj <- VJ * (CIJ - GammaStar)/(CIJ + 2.33*GammaStar)
     
     } else {
     # Ethier and Livingston (2004) (Equation 10).
